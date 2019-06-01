@@ -82,7 +82,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey we created above
-    return return Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Form(
         key: _formKey,
