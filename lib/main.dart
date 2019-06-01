@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hack19_flutter/list_cell.dart';
+
+import 'list_cell.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,19 +22,24 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: <Widget>[MyCustomForm(),RaisedButton(
-          child: Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
-            );
-          },
-        ),],
+      body: Column(
+        children: <Widget>[
+          MyCustomForm(),
+          RaisedButton(
+            child: Text('Open route'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondRoute()),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -42,19 +50,24 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text("List of Developers"),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
+      body: Column(
+        children: <Widget>[
+          CardBuild(),
+          CardBuild(),CardBuild(),CardBuild(),
+          RaisedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Go back!'),
+          ),
+        ],
       ),
     );
   }
 }
+
 // Create a Form Widget
 class MyCustomForm extends StatefulWidget {
   @override
@@ -62,7 +75,6 @@ class MyCustomForm extends StatefulWidget {
     return MyCustomFormState();
   }
 }
-
 
 // Create a corresponding State class. This class will hold the data related to
 // the form.
@@ -107,6 +119,5 @@ class MyCustomFormState extends State<MyCustomForm> {
         ],
       ),
     );
-    
   }
 }
