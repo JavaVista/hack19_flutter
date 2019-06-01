@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 
-class CardBuild extends StatelessWidget {
+class ListViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('List View'),
+      ),
+
+      body: TheListView().build(),
+    );
+  }
+}
+
+class TheListView{
+  Card makeViewCard(String image, String name){
     return Card(
       child: Container(
         child: Row(
@@ -16,8 +29,11 @@ class CardBuild extends StatelessWidget {
                     height: 90.0,
                     width: 90.0,
                     decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(image),
+                            fit: BoxFit.scaleDown),
                         border:
-                        Border.all(color: Colors.green, width: 2.0),
+                        Border.all(color: Colors.blueAccent, width: 2.0),
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
                 ),
@@ -33,7 +49,7 @@ class CardBuild extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text('My Name is WhaT',
+                        Text(name,
                             style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w600)),
@@ -76,19 +92,19 @@ class CardBuild extends StatelessWidget {
                           Icon(
                             Icons.star_border,
                             size: 10.0,
-                            color: Colors.green,
+                            color: Colors.blueAccent,
                           ),
                         ],
                       ),
                     ),
                     RaisedButton(
-                        color: Colors.green,
+                        color: Colors.blueAccent,
                         onPressed: () {},
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(
                               5.0, 0.0, 5.0, 0.0),
                           child: Text(
-                            'Hire me Now!',
+                            'Hire Me Now!',
                             style: TextStyle(color: Colors.white),
                           ),
                         ))
@@ -106,7 +122,7 @@ class CardBuild extends StatelessWidget {
                     child: Icon(
                       Icons.chevron_right,
                       size: 60.0,
-                      color: Colors.green,
+                      color: Colors.blueAccent,
                     ),
                   ),
                 ],
@@ -117,4 +133,26 @@ class CardBuild extends StatelessWidget {
       ),
     );
   }
+
+  ListView build(){
+    return ListView(
+      children: <Widget>[
+        makeViewCard('assets/logo.png', 'Rody'),
+        makeViewCard('assets/logo.png', 'Joe'),
+        makeViewCard('assets/logo.png', 'Mike'),
+        makeViewCard('assets/logo.png', 'Javi'),
+        makeViewCard('assets/logo.png', 'Rody'),
+        makeViewCard('assets/logo.png', 'Joe'),
+        makeViewCard('assets/logo.png', 'Mike'),
+        makeViewCard('assets/logo.png', 'Javi'),
+        makeViewCard('assets/logo.png', 'Rody'),
+        makeViewCard('assets/logo.png', 'Joe'),
+        makeViewCard('assets/logo.png', 'Mike'),
+        makeViewCard('assets/logo.png', 'Javi'),
+
+        
+      ],
+    );
+  }
+
 }

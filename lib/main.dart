@@ -52,18 +52,11 @@ class SecondRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text("List of Developers"),
       ),
-      body: Column(
-        children: <Widget>[
-          CardBuild(),
-          CardBuild(),CardBuild(),CardBuild(),
-          RaisedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Go back!'),
-          ),
-        ],
-      ),
+      body: TheListView().build()
+       
+         
+        
+      
     );
   }
 }
