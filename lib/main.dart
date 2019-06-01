@@ -9,14 +9,14 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: appTitle,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
         ),
         body: MyCustomForm(),
       ),
-      routes:{
-          '/list': (context) => ListView()},
+      routes: {'/list': (context) => ListView()},
     );
   }
 }
@@ -68,17 +68,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               },
               child: Text('Submit'),
             ),
-          ),Padding(
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: RaisedButton(
               onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, we want to show a Snackbar
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
+                Navigator.pushNamed(context, '/list');
               },
               child: Text('avail'),
             ),
