@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hack19_flutter/list_cell.dart';
 
 import 'list_cell.dart';
@@ -81,35 +82,73 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey we created above
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text('Enter your Full Name'),
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-            },
+    return return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Enter Your Personal Information'),
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.person),
+                  hintText: 'Enter your first and last name',
+                  labelText: 'Name',
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.phone),
+                  hintText: 'Enter a phone number',
+                  labelText: 'Phone',
+                ),
+                keyboardType: TextInputType.phone,
+                inputFormatters: [
+                  WhitelistingTextInputFormatter.digitsOnly,
+                ],
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.email),
+                  hintText: 'Enter a email address',
+                  labelText: 'Email',
+                ),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.calendar_today),
+                  hintText: 'Enter your date of birth',
+                  labelText: 'Dob',
+                ),
+                keyboardType: TextInputType.datetime,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: RaisedButton(
+                  onPressed: () {
+                    // Validate will return true if the form is valid, or false if
+                    // the form is invalid.
+                    if (_formKey.currentState.validate()) {
+                      // If the form is valid, we want to show a Snackbar
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('Processing Data')));
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: RaisedButton(
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, we want to show a Snackbar
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
