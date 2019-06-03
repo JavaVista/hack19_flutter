@@ -9,7 +9,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Orlando Flutter for Hire';
+    final String appTitle = 'Orlando Flutter for Hire';
 
     return MaterialApp(
       title: appTitle,
