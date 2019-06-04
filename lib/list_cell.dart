@@ -121,7 +121,7 @@ class TheListView{
                     },
                     child: Icon(
                       Icons.chevron_right,
-                      size: 60.0,
+                      size: 30.0,
                       color: Colors.blueAccent,
                     ),
                   ),
